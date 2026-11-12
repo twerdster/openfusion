@@ -1,5 +1,13 @@
 # OpenFusion
 
+<p align="center">
+  <img src="assets/project-preview.jpg" alt="Four-panel figure: Phong-shaded 3D reconstruction of a seated person, raw normal map from input, depth image from input, and the unused camera RGB image" width="480">
+</p>
+
+![Platform: Linux + NVIDIA CUDA](https://img.shields.io/badge/platform-Linux%20%2B%20NVIDIA%20CUDA-lightgrey)
+![Code: C++ / CUDA](https://img.shields.io/badge/code-C%2B%2B%20%2F%20CUDA-blue)
+![Source: pinned upstream submodule](https://img.shields.io/badge/source-pinned%20upstream%20submodule-blue)
+
 A camera-agnostic implementation of KinectFusion using CUDA and OpenCV, with an abstract camera interface.
 
 Students: Nurit Schwabsky, Vered Cohen.
@@ -9,6 +17,10 @@ Supervision: Aaron Wetzler and Chaim Gotsman. Later upstream code organization: 
 ## Status
 
 The [original 35-page project report](docs/report.pdf) has been recovered. The public [Gil Ben-Shachar upstream repository](https://github.com/gilbs10/OpenFusion) is included as the `source/` Git submodule, pinned to commit `8d435bfff054543c7e57274b773503b1370f90b4`. This preserves the original source and third-party notices rather than relabeling it as new code.
+
+## Original code
+
+[`source/`](https://github.com/gilbs10/OpenFusion/tree/8d435bfff054543c7e57274b773503b1370f90b4) is a Git submodule pointing to [gilbs10/OpenFusion](https://github.com/gilbs10/OpenFusion) at commit `8d435bfff054543c7e57274b773503b1370f90b4`. Its contents, including bundled third-party headers and notices, are the upstream's own files, unmodified by this archive. Clone with `--recurse-submodules` to populate it.
 
 ## Running
 
@@ -42,4 +54,6 @@ A 2014 handoff described an earlier Visual Studio 2010 / CUDA 5.5 setup. That is
 ## Attribution and Updates
 
 Original student and third-party notices remain in the pinned upstream source. No overall license file was found there; no new source-code license is assigned by this archive. Original authors can open an issue to contribute updates or request corrections or removal of their material.
+
+Figure provenance: `assets/project-preview.jpg` is the original student-project figure from the archived project page on Aaron Wetzler's website, copied without modification. It is a historical figure, not a new reconstruction result.
 
