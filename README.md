@@ -37,6 +37,8 @@ A 2014 handoff described an earlier Visual Studio 2010 / CUDA 5.5 setup. That is
 - [Original source](https://github.com/gilbs10/OpenFusion)
 - [Recovered project report](docs/report.pdf)
 
+- [Project page](https://gip.cs.technion.ac.il/last-projects-2012-2.html)
+
 ## Attribution and Updates
 
 Original student and third-party notices remain in the pinned upstream source. No overall license file was found there; no new source-code license is assigned by this archive. Original authors can open an issue to contribute updates or request corrections or removal of their material.
