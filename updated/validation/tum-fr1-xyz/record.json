@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "executed_and_evaluated",
+  "accuracy_pass_threshold": null,
+  "dataset": {
+    "name": "TUM RGB-D Freiburg 1 xyz",
+    "sensor": "real Kinect",
+    "authors": "Jürgen Sturm, Nikolas Engelhard, Felix Endres, Wolfram Burgard, Daniel Cremers",
+    "citation": "A Benchmark for the Evaluation of RGB-D SLAM Systems, IROS 2012",
+    "download_page": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download",
+    "archive_url": "https://webshare.cvg.cit.tum.de/g/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_xyz.tgz",
+    "archive_bytes": 448204271,
+    "archive_sha256": "a0236d97b8c30cd93b653656d2b6c293ff7c982a4130ef2a1a8beecdb124ef98",
+    "license": "CC BY 4.0",
+    "license_source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset#license",
+    "derived_materials": "Units-converted depth, recorded camera estimates, reconstructed geometry, offline evaluation and preview composition are maintenance transformations, not dataset-author outputs."
+  },
+  "runtime": {
+    "repository": "https://github.com/twerdster/openfusion",
+    "commit": "fbbea810e41b03dc9be90c61b87f9187d4d18a61",
+    "binary_sha256": "2a7baca80e924c068b9db8256ed8b9bea76c14718ef75fb53ec2ad4fcdc0ae97",
+    "original_submodule": "8d435bfff054543c7e57274b773503b1370f90b4",
+    "original_submodule_clean": true,
+    "cuda_pipeline_changed_for_this_recording": false,
+    "prior_source_manifest_all_hashes_match": true,
+    "environment": {
+      "os": "Ubuntu 22.04 x86_64",
+      "gpu": "RTX 4090",
+      "cuda": "11.5.119",
+      "driver": "570.211.01",
+      "gcc": "11.4.0",
+      "cmake": "3.22.1"
+    },
+    "volume_dimension": 512,
+    "volume_width_mm": 1024,
+    "voxel_width_mm": 2,
+    "image_dimensions": [
+      640,
+      480
+    ],
+    "frames_processed": 798,
+    "icp_transitions_solved": 797,
+    "final_raycast_points": 184730,
+    "observed_voxels": 101431317,
+    "ground_truth_used_for_runtime": false,
+    "log": "run-full.log",
+    "metrics": "metrics-full.json"
+  },
+  "conversion": {
+    "manifest": "manifest-full.json",
+    "start": 0,
+    "frames": 798,
+    "stride": 1,
+    "downsample": 1,
+    "depth_units_conversion": "round(raw_uint16 / 5) to little-endian uint16 millimetres; zero invalid",
+    "filtering_or_hole_filling": false,
+    "extra_depth_correction": false,
+    "rgb_used_for_reconstruction": false,
+    "default_intrinsics": [
+      525,
+      525,
+      319.5,
+      239.5
+    ],
+    "source_first_depth_timestamp": 1305031102.160407,
+    "source_last_depth_timestamp": 1305031128.754646,
+    "source_timestamp_span_seconds": 26.594238996505737
+  },
+  "evaluation": {
+    "record": "evaluation-full.json",
+    "estimated_tum_trajectory": "estimated-full.txt",
+    "independent_crosscheck": "independent-crosscheck.json",
+    "accepted_pose_pairs": 795,
+    "rejected_associations": 3,
+    "rejected_recorded_frames": [
+      202,
+      203,
+      204
+    ],
+    "rejection_reason": "110.1 ms motion-capture gap; one or both interpolation endpoints exceed20ms. These are not ICP failures.",
+    "primary_alignment": "first-pose coordinate anchoring, no fitted trajectory transform or scale",
+    "translation_rmse_mm": 29.50076018603399,
+    "rotation_rmse_degrees": 1.2004385595903202,
+    "stationary_translation_rmse_mm": 238.97892479347783,
+    "separate_se3_aligned_position_ate_rmse_mm": 17.420593712842134,
+    "se3_scale_fixed_at": 1,
+    "independent_check_scope": "Direct TUM-global coordinate calculations without importing evaluate_tum.py; matches all795 pairs and translation errors within8e-10mm."
+  },
+  "commands": {
+    "conversion": "python3 updated/tools/convert_tum.py /path/to/tum-fr1-xyz /path/to/tum-recording --start 0 --frames 798 --stride 1 --downsample 1",
+    "execution": "timeout 600 nice -n 10 stdbuf -oL build/updated/openfusion_headless --recording /path/to/tum-recording --frames 798 --output /path/to/tum-output",
+    "evaluation": "python3 updated/tools/evaluate_tum.py --recording /path/to/tum-recording --metrics /path/to/tum-output/replay/metrics.json --output /path/to/tum-output/trajectory-evaluation.json",
+    "tests": "python3 -m unittest discover -s updated/tests -p 'test_tum_*.py' -v"
+  },
+  "python_checks": {
+    "passed": 15,
+    "total": 15,
+    "scope": "6 conversion and9 evaluation constructed-input regressions; not15 independent camera sequences",
+    "mac": {
+      "python": "3.14.4",
+      "numpy": "2.5.4",
+      "pillow": "13.0.0",
+      "log": "tests.log"
+    },
+    "linux": {
+      "python": "3.10.12",
+      "numpy": "2.2.6",
+      "pillow": "9.0.1",
+      "log": "tests-linux.log"
+    }
+  },
+  "artifacts": {
+    "poster": "../../../assets/real-tum-demo.png",
+    "video_provenance": "video-provenance.json",
+    "video_qa": "video-qa.json",
+    "video_pixel_qa": "video-pixel-qa.json",
+    "video": {
+      "filename": "openfusion-tum-fr1-xyz.mp4",
+      "distribution": "Linked from the chat as a local MP4; raw video and recording stack are not committed to this repository.",
+      "sha256": "705bdc9950dccf2482e5bf31d338e11e0a918a381a17e3bb84abc155169d0b60",
+      "frames": 798,
+      "duration_seconds": 26.6,
+      "dimensions": [
+        1920,
+        720
+      ],
+      "saved_playback_fps": 30,
+      "runtime_performance_claim": false
+    }
+  },
+  "preserved_raw_record_names": {
+    "manifest-full.json": "manifest.json",
+    "metrics-full.json": "metrics.json",
+    "estimated-full.txt": "trajectory-evaluation.estimated.txt"
+  },
+  "limitations": [
+    "One real translational desk recording; not arbitrary scene, rotation or live-sensor validation.",
+    "Fixed1,024mm cube clips the larger room; no volume shifting, tracking recovery or loop closure.",
+    "Camera trajectory ground truth only; no surface-geometry accuracy or completeness measurement.",
+    "No timing benchmark or real-data sanitizer run. Earlier synthetic sanitizers retain their original scope.",
+    "No overall recovered-code license; datasetCCBY4terms are separate from individual code notices."
+  ],
+  "documentation_verification": "documentation-qa.json"
+}

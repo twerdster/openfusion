@@ -1,0 +1,60 @@
+{
+  "scope": "Independent direct TUM-global computation; no evaluate_tum.py functions imported. Linear translation and quaternion SLERP with both GT brackets within20ms; no extrapolation.",
+  "estimated_frames": 798,
+  "matched_frames": 795,
+  "rejected_frames": [
+    {
+      "reason": "bracketing endpoint farther than20ms",
+      "timestamp": 1305031108.867534,
+      "lower_timestamp": 1305031108.8357,
+      "upper_timestamp": 1305031108.9458,
+      "lower_delta_seconds": 0.03183388710021973,
+      "upper_delta_seconds": 0.07826614379882812,
+      "mocap_gap_seconds": 0.11010003089904785,
+      "index": 201,
+      "recorded_frame": 202
+    },
+    {
+      "reason": "bracketing endpoint farther than20ms",
+      "timestamp": 1305031108.90354,
+      "lower_timestamp": 1305031108.8357,
+      "upper_timestamp": 1305031108.9458,
+      "lower_delta_seconds": 0.0678398609161377,
+      "upper_delta_seconds": 0.042260169982910156,
+      "mocap_gap_seconds": 0.11010003089904785,
+      "index": 202,
+      "recorded_frame": 203
+    },
+    {
+      "reason": "bracketing endpoint farther than20ms",
+      "timestamp": 1305031108.935116,
+      "lower_timestamp": 1305031108.8357,
+      "upper_timestamp": 1305031108.9458,
+      "lower_delta_seconds": 0.09941601753234863,
+      "upper_delta_seconds": 0.010684013366699219,
+      "mocap_gap_seconds": 0.11010003089904785,
+      "index": 203,
+      "recorded_frame": 204
+    }
+  ],
+  "matched_frame_indices_identical_to_evaluator": true,
+  "timestamp_export_max_abs_error_seconds": 0.0,
+  "export_translation_max_component_error_metres": 9.173550807872743e-12,
+  "export_rotation_max_component_error": 1.2489804329662846e-11,
+  "direct_global_translation_rmse_mm": 29.50076018527558,
+  "direct_global_translation_final_mm": 34.02803108454046,
+  "direct_global_translation_max_mm": 56.75117287525155,
+  "direct_global_rotation_rmse_degrees": 1.2004385592690807,
+  "direct_global_rotation_final_degrees": 1.0243923712702327,
+  "direct_global_stationary_baseline_rmse_mm": 238.97892479347786,
+  "direct_global_se3_aligned_ate_rmse_mm": 17.420593712842088,
+  "se3_scale_fixed_at": 1.0,
+  "evaluation_translation_rmse_difference_mm": -7.584084471545793e-10,
+  "evaluation_rotation_rmse_difference_degrees": -3.2123947946161024e-10,
+  "evaluation_aligned_ate_rmse_difference_mm": -4.618527782440651e-14,
+  "official_format_source": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats",
+  "ground_truth_sha256": "aac0319a6ef4e1cdf61e779d2152b95aa7e9f7b1749d6d18717b43ddabffede2",
+  "metrics_sha256": "e4755383232103be375d57ec48487246bcda5d84887e53de57efa1fc7c812ba8",
+  "evaluation_sha256": "3696eca03aea475b64463803fd7191910e0ebce9b7ca31e956793cfe3d862380",
+  "export_sha256": "462b444c94b73efc3c7f399b922991b57a3cb109b5fe88583727768c27cba53c"
+}

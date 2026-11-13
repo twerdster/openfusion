@@ -1,0 +1,20 @@
+{
+  "assets/real-tum-demo.png": "ad40ba9e71d9131422ebdbef9f779000f9c368fcbaa5f5fa9efdd32ec7277b7d",
+  "updated/tests/test_tum_conversion.py": "f2831698beaca0916ac4987964de727a5bbaef595bf973801e4956cefa3cac60",
+  "updated/tests/test_tum_evaluation.py": "5a9e86338f66d98d3455193fdc07cb0957dbb4cfdca2674093b2fa2189e2b510",
+  "updated/tools/convert_tum.py": "df8f718fd6c5716e6787146bed68b9016dc85d943290042a7b5aa51f99804210",
+  "updated/tools/evaluate_tum.py": "fbcc7d7865fb628200eab4f61d628fd38d551347b39cdcea7f040c4699644edd",
+  "updated/validation/tum-fr1-xyz/documentation-qa.json": "37e9f63428361b68fdd2bafc50df4dc42a1672b31843c8b55e7ed28dd44b3504",
+  "updated/validation/tum-fr1-xyz/estimated-full.txt": "462b444c94b73efc3c7f399b922991b57a3cb109b5fe88583727768c27cba53c",
+  "updated/validation/tum-fr1-xyz/evaluation-full.json": "3696eca03aea475b64463803fd7191910e0ebce9b7ca31e956793cfe3d862380",
+  "updated/validation/tum-fr1-xyz/independent-crosscheck.json": "38ecb3a597344bb6913d78854eaffb5102d6624145632b277c685654ecf7aec4",
+  "updated/validation/tum-fr1-xyz/manifest-full.json": "6e4a711df4daa316241ae09c96087942d4a34ea18bc16686690a29e448be5288",
+  "updated/validation/tum-fr1-xyz/metrics-full.json": "e4755383232103be375d57ec48487246bcda5d84887e53de57efa1fc7c812ba8",
+  "updated/validation/tum-fr1-xyz/record.json": "3484e8475e11822395c6e87417c8250064821b847520cf687eb38de51ad3dd51",
+  "updated/validation/tum-fr1-xyz/run-full.log": "54de0cdd51971407cfb14930cbdd6439e0db03c34eeae5357ad5ce3275888a99",
+  "updated/validation/tum-fr1-xyz/tests-linux.log": "da8819a0102addd75b6f3dc4bd0610086fb38bfa46bdb8e39a6853f43855aecc",
+  "updated/validation/tum-fr1-xyz/tests.log": "bdd47567419ec6e2f9f50b1ac063433340d1cbd8c39c885397362e51f87a2bbc",
+  "updated/validation/tum-fr1-xyz/video-pixel-qa.json": "406409af58a05f9e8fdbc16dd7f7836990c441964f9140f7b1ce863ef851bf91",
+  "updated/validation/tum-fr1-xyz/video-provenance.json": "8f3ec44195514be135a5c376f6b0565be749558802aac06458b8e74eea253534",
+  "updated/validation/tum-fr1-xyz/video-qa.json": "6f6af6a88452a6e80b659cf68a574c19942c362e888649e0fe5794fc3ed12d99"
+}

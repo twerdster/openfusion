@@ -1,0 +1,22 @@
+{
+  "documents": [
+    "README.md",
+    "SUMMARY.md",
+    "SKILL.md",
+    "updated/README.md",
+    "docs/BUILD.md",
+    "docs/REAL_DATA.md"
+  ],
+  "local_links_checked": 29,
+  "local_images_checked": 4,
+  "missing_local_targets": 0,
+  "renderer": "MarkdownIt CommonMark with tables and raw HTML enabled",
+  "browser": "headless Chrome via Playwright; actual README and real-data guide; all images loaded; no page JavaScript errors",
+  "visual_review": "Real-data guide, actual poster and six-view video contact sheet inspected",
+  "claude_review": {
+    "completed": true,
+    "session": "129e1a37-dad1-4151-b674-f529f3b5f24a",
+    "scope": "Focused editorial review of documentation and supplied verified project facts; no additional runtime evidence",
+    "applied": "Clarified interpolation anchor, capture timestamp span, orientation baseline, motion range and video distribution; useful suggestions checked against code and saved data."
+  }
+}

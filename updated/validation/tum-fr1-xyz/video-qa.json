@@ -1,0 +1,32 @@
+{
+  "decode_all_798_frames_exit_code": 0,
+  "faststart_moov_precedes_mdat": true,
+  "atoms": [
+    {
+      "offset": 0,
+      "type": "ftyp",
+      "bytes": 32
+    },
+    {
+      "offset": 32,
+      "type": "moov",
+      "bytes": 11067
+    },
+    {
+      "offset": 11099,
+      "type": "free",
+      "bytes": 8
+    },
+    {
+      "offset": 11107,
+      "type": "mdat",
+      "bytes": 25358461
+    }
+  ],
+  "visually_inspected": [
+    "poster PNG frame121",
+    "six-view contact sheet",
+    "decoded MP4 frame202: mocap unavailable label"
+  ],
+  "mp4_bytes": 25369568
+}

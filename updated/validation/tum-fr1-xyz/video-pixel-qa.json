@@ -1,0 +1,11 @@
+{
+  "poster_source_index": 120,
+  "poster_rgb_pixels_exactly_match_source": true,
+  "poster_raycast_pixels_exactly_match_saved_CUDA_PPM": true,
+  "missing_mocap_indices": [
+    201,
+    202,
+    203
+  ],
+  "all_798_source_manifest_hash_checks_passed": true
+}

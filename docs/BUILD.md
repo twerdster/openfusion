@@ -57,9 +57,11 @@ python3 updated/tools/view_demo.py replay-output/replay \
   --input-label "replay of the generated synthetic recording"
 ```
 
-Generic replay has no independent ground truth and records `ground_truth_available: false`, with status `executed`. The replay test requires a finite estimated pose and normals, nonempty raycast surface, successful subsequent ICP solves and unchanged allocation guards; producing output is not an accuracy test. It uses a fixed 1,024 mm cube centered at the world origin and an initial camera position of (0, 0, 768) mm; it does not infer a scene origin from the recording. It stops before integrating a frame whose ICP solve is rejected. It writes below `replay/`; inspect the JSON and tracking status before drawing conclusions.
+Generic replay does not evaluate ground truth: its runtime record contains no ground-truth measurements and sets `ground_truth_available: false`, with status `executed`. Independent ground truth, when available, is evaluated separately. The replay test requires a finite estimated pose and normals, nonempty raycast surface, successful subsequent ICP solves and unchanged allocation guards; producing output is not an accuracy test. It uses a fixed 1,024 mm cube centered at the world origin and an initial camera position of (0, 0, 768) mm; it does not infer a scene origin from the recording. It stops before integrating a frame whose ICP solve is rejected. It writes below `replay/`; inspect the JSON and tracking status before drawing conclusions.
 
 The viewer uses Python's standard library to embed PPM, ASCII PLY and JSON output into `demo.html`, with saved-frame playback and a rotatable point cloud. Its browser view requires neither a GPU nor a server. It displays previously computed results and does not execute reconstruction interactively.
+
+For the checked real Kinect import, including dependencies, depth units, timestamps and offline pose evaluation, see [TUM real-data instructions](REAL_DATA.md). A dataset import/evaluation adds Python 3.10+, NumPy and Pillow requirements; the CUDA build and standard-library saved-output viewer do not depend on those packages.
 
 ## Recording format
 

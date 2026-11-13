@@ -1,0 +1,20 @@
+test_archive_matches_directory_without_extracting (test_tum_conversion.ConversionTests) ... ok
+test_downsample_is_pixel_stride_with_matching_intrinsics (test_tum_conversion.ConversionTests) ... ok
+test_inconsistent_dimensions_and_eight_bit_depth_are_rejected (test_tum_conversion.ConversionTests) ... ok
+test_missing_frames_and_existing_output_are_rejected (test_tum_conversion.ConversionTests) ... ok
+test_non_monotonic_timestamps_and_unsafe_paths_are_rejected (test_tum_conversion.ConversionTests) ... ok
+test_units_endianness_association_and_ground_truth (test_tum_conversion.ConversionTests) ... ok
+test_end_to_end_errors_baseline_and_export (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_quaternion_roundtrip_including_180_degree_turns (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_reflection_conjugation_and_units (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_rejects_reflection_and_invalid_initialization (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_rejects_timestamp_gap_and_no_extrapolation (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_requires_adequate_associated_pairs (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_rigid_alignment_fits_no_scale (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_stationary_camera_at_nonidentity_global_pose (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+test_translation_and_quaternion_interpolation (test_tum_evaluation.TrajectoryEvaluationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.027s
+
+OK

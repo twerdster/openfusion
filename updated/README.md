@@ -21,9 +21,15 @@ build/updated/openfusion_headless --demo --output openfusion-output
 python3 updated/tools/view_demo.py openfusion-output/demo
 ```
 
-`--self-test` runs component regressions. `--demo` runs the moving synthetic recording. With no `--self-test`, `--demo` or `--recording` option, self-test and demo both run. `--output` selects the output directory. Three CTest entries exercise component checks, the synthetic demo and file replay of the generated recording. These are not independent dataset trials. See [build and recording details](../docs/BUILD.md) for raw frame/calibration layout and the `--recording DIR --frames N` replay mode. Generic replay has no ground truth and records status `executed`, not an accuracy pass.
+`--self-test` runs component regressions. `--demo` runs the moving synthetic recording. With no `--self-test`, `--demo` or `--recording` option, self-test and demo both run. `--output` selects the output directory. Three CTest entries exercise component checks, the synthetic demo and file replay of the generated recording. These are not independent dataset trials. See [build and recording details](../docs/BUILD.md) for raw frame/calibration layout and the `--recording DIR --frames N` replay mode. Generic replay does not evaluate ground truth and records status `executed`, not an accuracy pass. Independent trajectory ground truth can be evaluated separately.
 
 The default 512³ volume spans 1,024 mm at 2 mm per voxel. `-DOPENFUSION_VOLUME_SIZE=128` uses 8 mm voxels across the same volume; it is useful for smaller checks but introduces substantial quantization and banding. Resolution affects both tracking and rendering.
+
+## Real Kinect recording
+
+All 798 depth frames in the TUM Freiburg 1 xyz archive ran at 640 × 480 through the published CUDA pipeline without numerical or runtime changes. All 797 subsequent ICP solves completed; the capture timestamps span 26.594 seconds. Offline evaluation matched 795 frames to motion capture and rejected three timestamp associations. First-pose-anchored position RMSE was 29.501 mm, compared with a 238.979 mm stationary-pose baseline; orientation RMSE was 1.200°, versus 9.986° for the stationary baseline. Maximum position error was 56.751 mm; the last matched pose error was 34.028 mm. These are one-recording camera trajectory measurements, not a surface reconstruction benchmark.
+
+The [real-data guide](../docs/REAL_DATA.md) documents import and evaluation. `convert_tum.py` requires Python 3.10+, NumPy and Pillow; `evaluate_tum.py` requires NumPy. Ground truth is not supplied to ICP. Generic replay retains status `executed`; its separately produced trajectory report is `evaluated` with no accuracy pass threshold. Camera motion-capture ground truth does not provide a surface-error reference.
 
 ## Repairs and their scope
 
@@ -72,4 +78,4 @@ The checked-in [viewer](examples/demo.html) and [preview image](../assets/update
 
 Raycasting retains nearest-voxel lookup and a fixed 1.5 mm step. Its TSDF finite-difference normals had a mean interior angular error of 25.09° on the analytic plane fixture, even though they matched the CPU gradient reference. This is a geometric limitation, not a normal-quality pass. TSDF integration subtracts camera-to-sample radial ranges rather than measuring true nearest-surface distance; truncation and weight thresholds remain fixed.
 
-No real camera recording, extended motion, tracking-loss recovery, live sensor, original GUI or throughput benchmark has been validated. Synthetic input supports independent geometric expectations and fault regression, but does not establish robustness to sensor noise, missing data or calibration error.
+The real Kinect evidence is limited to one TUM recording and the fixed reconstruction cube; the larger observed room is partly clipped. Other sequences, tracking-loss recovery, live sensors, the original GUI and throughput benchmarks remain unvalidated. Synthetic fixtures continue to supply independent surface-geometry expectations and fault regressions; motion capture supplies a separate camera-trajectory check.

@@ -97,7 +97,7 @@
     "scope": "Only the hard negative truncation classification permits either unchanged or boundary-updated state inside this separately counted band."
   },
   "limitations": [
-    "Synthetic small-motion evidence; no real camera recording or benchmark quality/throughput claim.",
+    "Synthetic regressions and one real Kinect recording; no general reconstruction-quality or throughput claim.",
     "Original OpenGL GUI, live camera SDKs and optional image filters are outside the updated build.",
     "Nearest-voxel raycasting, fixed 1.5 mm step and radial nearest-pixel TSDF retain silhouette and normal errors.",
     "Mean analytic plane normal angular error was about 25.09 degrees at 512^3 despite matching the implemented finite-difference operator.",
@@ -117,5 +117,29 @@
       "no JavaScript errors or external requests"
     ]
   },
-  "source_manifest": "validation/source-sha256.json"
+  "source_manifest": "validation/source-sha256.json",
+  "real_recording": {
+    "dataset": "TUM RGB-D Freiburg 1 xyz, real Kinect",
+    "record": "validation/tum-fr1-xyz/record.json",
+    "guide": "../docs/REAL_DATA.md",
+    "runtime_commit": "fbbea810e41b03dc9be90c61b87f9187d4d18a61",
+    "runtime_changed_for_real_data": false,
+    "processed_depth_frames": 798,
+    "successful_icp_transitions": 797,
+    "image_dimensions": [
+      640,
+      480
+    ],
+    "source_timestamp_span_seconds": 26.594238996505737,
+    "accepted_motion_capture_pairs": 795,
+    "rejected_associations": 3,
+    "initial_anchored_translation_rmse_mm": 29.50076018603399,
+    "stationary_translation_rmse_mm": 238.97892479347783,
+    "rotation_rmse_degrees": 1.2004385595903202,
+    "ground_truth_used_for_runtime": false,
+    "surface_ground_truth_available": false,
+    "accuracy_pass_threshold": null,
+    "status": "executed_and_evaluated",
+    "poster": "../assets/real-tum-demo.png"
+  }
 }
