@@ -1,16 +1,18 @@
-# Updated OpenFusion: Linux replay and GPU checks
+# Updated OpenFusion
 
-This directory contains the 2026 maintenance port. The recovered original remains unchanged in `../source/`, pinned at `8d435bfff054543c7e57274b773503b1370f90b4`. Derived files retain its attribution and notices. The port is separate from the students' original work and does not introduce a blanket source license.
+![Real Kinect replay: RGB reference, measured depth and saved CUDA reconstruction](../assets/real-tum-demo.gif)
 
-## Implemented path
+*Excerpt from the real Kinect TUM Freiburg 1 xyz run. RGB is reference only; the other panels show measured depth and saved CUDA output. Saved playback is not a processing-speed measurement. Dataset: Sturm et al., IROS 2012, [CC BY 4.0](https://cvg.cit.tum.de/data/datasets/rgbd-dataset#license). [Data and preview details](../docs/REAL_DATA.md).*
 
-`openfusion_headless` reads calibrated binary depth frames, converts them to world-space vertices and normals on CUDA, estimates pose through ICP, integrates a TSDF volume, and raycasts its surface. ICP correspondence accumulation runs on CUDA; its 6 × 6 linear solve runs on the CPU with bundled Eigen headers. The demo generates deterministic analytic depth input and feeds the same file reader and CUDA operators used for replay.
+This is the 2026 Linux headless port. It reads calibrated depth frames, estimates camera motion with ICP, integrates a TSDF volume and raycasts the reconstruction. CUDA computes depth/normal maps, ICP correspondences, integration and raycasting; CPU Eigen solves ICP's 6 × 6 system.
 
-The original OpenGL application, live camera SDKs and optional image filters are outside this target. A headless build succeeding does not establish that those paths work.
+The recovered original is unchanged in `../source/` at `8d435bfff054543c7e57274b773503b1370f90b4`. Derived files retain their notices. This updated work is separate from the students' original implementation; see [attribution and terms](../README.md#original-project-and-attribution).
 
-## Build and use
+## Build and run
 
-Use Linux, an NVIDIA GPU/driver, compatible CUDA toolkit and host compiler, CMake ≥3.18, and a C++17 compiler. Python 3 is optional for viewing saved output. No system Eigen or display libraries are required. From the repository root:
+Use Linux, an NVIDIA GPU/driver, a compatible CUDA toolkit/host compiler, C++17 and CMake ≥3.18. CMake 3.22.1 was tested. No system Eigen or display libraries are needed. Python 3 is optional for the saved-output viewer; TUM import/evaluation additionally needs Python 3.10+, NumPy and Pillow.
+
+From the repository root:
 
 ```sh
 git submodule update --init
@@ -21,61 +23,22 @@ build/updated/openfusion_headless --demo --output openfusion-output
 python3 updated/tools/view_demo.py openfusion-output/demo
 ```
 
-`--self-test` runs component regressions. `--demo` runs the moving synthetic recording. With no `--self-test`, `--demo` or `--recording` option, self-test and demo both run. `--output` selects the output directory. Three CTest entries exercise component checks, the synthetic demo and file replay of the generated recording. These are not independent dataset trials. See [build and recording details](../docs/BUILD.md) for raw frame/calibration layout and the `--recording DIR --frames N` replay mode. Generic replay does not evaluate ground truth and records status `executed`, not an accuracy pass. Independent trajectory ground truth can be evaluated separately.
+Choose the runner mode:
 
-The default 512³ volume spans 1,024 mm at 2 mm per voxel. `-DOPENFUSION_VOLUME_SIZE=128` uses 8 mm voxels across the same volume; it is useful for smaller checks but introduces substantial quantization and banding. Resolution affects both tracking and rendering.
+- `--self-test`: GPU component regressions against CPU references.
+- `--demo`: generate and reconstruct the moving synthetic scene.
+- `--recording DIR --frames N`: reconstruct a compatible recording.
 
-## Real Kinect recording
+`--output DIR` selects the output directory. With no mode selected, self-test and demo both run. CTest runs three entries: component checks, synthetic demo and replay of that generated recording. They are not three independent datasets. See [build and recording instructions](../docs/BUILD.md) for format, calibration, CUDA targets and resource requirements.
 
-All 798 depth frames in the TUM Freiburg 1 xyz archive ran at 640 × 480 through the published CUDA pipeline without numerical or runtime changes. All 797 subsequent ICP solves completed; the capture timestamps span 26.594 seconds. Offline evaluation matched 795 frames to motion capture and rejected three timestamp associations. First-pose-anchored position RMSE was 29.501 mm, compared with a 238.979 mm stationary-pose baseline; orientation RMSE was 1.200°, versus 9.986° for the stationary baseline. Maximum position error was 56.751 mm; the last matched pose error was 34.028 mm. These are one-recording camera trajectory measurements, not a surface reconstruction benchmark.
+## Recorded results
 
-The [real-data guide](../docs/REAL_DATA.md) documents import and evaluation. `convert_tum.py` requires Python 3.10+, NumPy and Pillow; `evaluate_tum.py` requires NumPy. Ground truth is not supplied to ICP. Generic replay retains status `executed`; its separately produced trajectory report is `evaluated` with no accuracy pass threshold. Camera motion-capture ground truth does not provide a surface-error reference.
+The updated CUDA pipeline, with no recording-specific changes, processed all 798 TUM Freiburg 1 xyz depth frames at 640 × 480, completing 797 ICP transitions. Capture timestamps span 26.594 seconds. Offline evaluation accepted 795 motion-capture pairs; three associations were rejected because of a motion-capture gap.
 
-## Repairs and their scope
+First-pose-anchored position RMSE was **29.501 mm**, versus **238.979 mm** for a stationary pose. Orientation RMSE was **1.200°**, versus **9.986°** stationary. Ground truth is used after replay for evaluation, never to initialize ICP. These measurements describe camera tracking in one recording; no surface scan was available to measure reconstruction accuracy. [Real-data reproduction and evidence](../docs/REAL_DATA.md) and [detailed validation notes](../docs/VALIDATION.md) retain the methods, failures, synthetic thresholds and sanitizer scope.
 
-- The build uses CMake CUDA targets and a small runtime compatibility wrapper instead of the removed CUDA SDK `cutil_inline` helper. Numerical helper headers still come from the pinned source.
-- TSDF integration now writes the x-plane corresponding to its world-space sample, rather than advancing the address before the first write and overrunning the final plane. It also rejects voxels behind the camera.
-- ICP reduction covers the intended upper triangle, initializes symmetric entries and keeps padded image lanes in CUDA barriers. Non-multiple-of-16 image sizes are exercised.
-- Matrix inverses are evaluated before assignment to avoid Eigen aliasing. ICP exposes finite/positive-definite failure and iteration status, and allocated arrays are released.
-- Replay checks calibration and exact payload lengths, returns failure at end of input and rejects unsupported nonzero depth offsets. Raycast pixels that miss the volume are cleared.
+## Output and limits
 
-The integration guard failure and instrumented reduction comparison have direct regression evidence. Explicit symmetric output is an interface contract; the original CPU solver already filled its lower triangle. Evaluated inverses, solve-status checks and cleanup are defensive correctness/maintenance changes unless separately demonstrated by a failure record. These changes do not add relocalization, loop closure or a tracking-quality guarantee.
+Under the chosen output directory, `demo/` or `replay/` contains PPM images, JSON records and `surface.ply`—raycast surface points and normals, not a mesh. The viewer creates `demo.html` for saved-frame playback and point-cloud rotation; viewing it does not execute CUDA. Generic replay records `executed`, not an accuracy pass; independent trajectory evaluation is separate.
 
-## Checks and interpretation
-
-The checked environment is Ubuntu 22.04, GCC 11.4, CMake 3.22.1, CUDA 11.5.119, driver 570.211.01 and an RTX 4090. Initial validation used `RelWithDebInfo`; an isolated clean `Release` build also passed the three CTest entries. [VALIDATION.json](VALIDATION.json) records the run and [validation/](validation/) retains commands and logs.
-
-Regressions check depth/RGB byte replay, malformed inputs, depth-to-vertex and neighboring-pixel normal calculations, GPU correspondence matrices against CPU accumulation, and full-volume TSDF integration against a CPU reference. They also check known camera motion, rejection of a rank-deficient planar ICP solve, raycast geometry, allocation guard slabs and rejection of behind-camera voxels. Restoring the unmodified original integration kernel causes the allocation-guard regression to fail. The numerical reference did not reject the original reduction in the uninstrumented kernel probe; its unused shared scratch contents are undefined. Seeding its unused shared scratch with finite 1.0 values makes the original 512-entry reduction over 256 threads fail the CPU numerical reference; the updated 256-entry reduction passes with equivalent seeding. This deliberately instrumented experiment exposes dependence on scratch contents, rather than proving that every unmodified original execution fails. [Ablation records](validation/ablation-results.json) preserve both failures and the fixed control.
-
-The TSDF reference has a separately counted ±0.002 mm band around the negative truncation boundary, SDF = −10 mm. CPU and GPU rounding can put a voxel on different sides of this cutoff. Only the corresponding weight decision in that band is treated separately and counted; this is not a general geometry tolerance. Outside the classification band, expected weights and TSDF error are checked directly. At 512³, 525 voxels were in the band and one CPU/GPU weight decision differed.
-
-The demo uses 12 frames at 193 × 145 pixels, three spheres in an asymmetric arrangement and a back plane, with known small translation/rotation. It checks tracking against known poses and a stationary-pose baseline, volume observations/weights, per-sphere coverage and geometric error. `surface.ply` contains final raycast surface samples, not a mesh.
-
-Two error families are reported separately. Point-to-scene error is the minimum distance to independently defined sphere/back-plane surfaces. Same-ray range error compares the raycast point with the analytic first hit for that pixel at the estimated camera pose; it captures foreground/background visibility disagreement at silhouettes. A low point-to-surface error alone cannot prove correct visibility or coverage, so range outlier and coverage checks remain part of the result.
-
-The recorded 512³ run produced final pose error 2.915 mm / 0.1772° (also the maxima). True final translation was 8.661 mm, the estimated displacement was 6.088 mm, and the stationary-pose baseline error was 8.661 mm. Surface RMSE grew from 0.807 to 1.995 mm, and pose error generally grew across the sequence. Final same-ray range RMSE was 14.414 mm, with 0.43% of hits over the 5.5 mm threshold. This large-error tail is consistent with silhouette discrepancies; locations were not separately classified. Final raycasts hit 26,977 of 27,985 pixels, assigning 3,400 / 1,857 / 834 points within 5.5 mm of the nearest analytic sphere components.
-
-The demo enforces the following fixture thresholds at 512³. These are regression criteria for this generated scene, not an application accuracy specification.
-
-| Check | Required result |
-| --- | --- |
-| Each frame | ICP completes after the initialized first frame; pose error <12 mm and <1.5° |
-| Surface geometry | RMSE <4.5 mm and 95th percentile <5.5 mm |
-| Range-error tail | Fewer than 5% of hits exceed 5.5 mm same-ray error |
-| Surface observations | More than half the image rays hit; each analytic sphere receives at least 100 assigned samples within 5.5 mm |
-| Motion baseline | Final translation error <75% of the stationary-pose baseline; estimated displacement >50% of true final displacement |
-| Integration | More than 10,000 observed voxels, maximum weight equals 12 frames, unchanged guard slabs |
-
-Geometry/range thresholds scale with voxel width in other builds. The 128³ self-test/demo and sanitizer runs are recorded separately; generic file replay was checked at 512³. The log's expected `No transform found` message belongs to the singular-plane ICP rejection check.
-
-Compute Sanitizer memcheck, racecheck, initcheck and synccheck each completed the 128³ component checks and moving demo with no reported errors or shared-memory race hazards. This does not establish memory/synchronization correctness for every resolution, input or application path. This initcheck version checks global initialization, not shared-memory initialization; CPU numerical references and the separately qualified scratch experiment address the ICP reduction. Saved logs identify commands and scope.
-
-## Saved output and limitations
-
-`demo/recording/` contains generated calibration and `uint16` depth frames. PPM files show input depth/normals and per-frame reconstruction raycasts. JSON contains errors, poses, coverage and integration counts. `view_demo.py` embeds PPM, ASCII PLY and JSON output into standalone HTML using Python's standard library. Saved-frame playback and point-cloud rotation display existing output; they do not execute CUDA in the browser.
-
-The checked-in [viewer](examples/demo.html) and [preview image](../assets/updated-demo.png) come from the Linux `run-512/demo` output whose metrics are retained in [metrics-512.json](validation/metrics-512.json). The preview is a browser screenshot of the viewer's three saved image panels. [Artifact provenance](examples/provenance.json) records input/output hashes and reproduction commands.
-
-Raycasting retains nearest-voxel lookup and a fixed 1.5 mm step. Its TSDF finite-difference normals had a mean interior angular error of 25.09° on the analytic plane fixture, even though they matched the CPU gradient reference. This is a geometric limitation, not a normal-quality pass. TSDF integration subtracts camera-to-sample radial ranges rather than measuring true nearest-surface distance; truncation and weight thresholds remain fixed.
-
-The real Kinect evidence is limited to one TUM recording and the fixed reconstruction cube; the larger observed room is partly clipped. Other sequences, tracking-loss recovery, live sensors, the original GUI and throughput benchmarks remain unvalidated. Synthetic fixtures continue to supply independent surface-geometry expectations and fault regressions; motion capture supplies a separate camera-trajectory check.
+The default 512³ volume spans 1,024 mm at 2 mm per voxel and clips the larger room. Nearest-voxel raycasting retains banding and normal errors. This target does not include live sensor input, the original GUI, optional filters, volume shifting, tracking recovery or loop closure. No throughput benchmark was run. The [validation notes](../docs/VALIDATION.md) explain those limits and the coarse 128³ checks.

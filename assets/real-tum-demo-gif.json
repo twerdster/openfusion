@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "asset": "real-tum-demo.gif",
+  "asset_sha256": "de6dd0b2d807825bf32e56c448c10670ae56327954fe612211214dc6eb4d0e50",
+  "bytes": 1889695,
+  "limit_bytes_exclusive": 2000000,
+  "width": 800,
+  "height": 300,
+  "frames": 36,
+  "playback_fps": 6,
+  "duration_seconds": 6,
+  "loop": "infinite",
+  "content": "Actual recorded RGB, measured Kinect depth colour display and saved OpenFusion CUDA TSDF raycasts. No generated scene frames or new reconstruction. Palette quantization and spatial area scaling reduce GIF size.",
+  "source_video": {
+    "filename": "openfusion-tum-fr1-xyz.mp4",
+    "sha256": "705bdc9950dccf2482e5bf31d338e11e0a918a381a17e3bb84abc155169d0b60",
+    "bytes": 25369568,
+    "width": 1920,
+    "height": 720,
+    "fps": 30,
+    "frames": 798,
+    "duration_seconds": 26.6
+  },
+  "excerpt": {
+    "source_video_start_seconds": 3,
+    "source_video_end_seconds_exclusive": 9,
+    "duration_seconds": 6,
+    "selection": "FFmpeg fps=6 selects actual source frames, without temporal interpolation; all three source panels retained.",
+    "first_displayed_recorded_frame_1_based": 93,
+    "last_displayed_recorded_frame_1_based": 268
+  },
+  "display_scope": "Saved-output playback. GIF speed is not a reconstruction performance measurement. Motion-capture errors are offline camera trajectory comparisons, not surface error. Source frame/time/error captions remain visible; unmatched mocap timestamps remain labeled unavailable.",
+  "caption_adjustment": {
+    "reason": "Source video footer says 30 fps; the GIF plays at 6 fps. Only that footer label is replaced.",
+    "rectangle_xywh": [
+      596,
+      255,
+      204,
+      15
+    ],
+    "replacement_text": "6 fps GIF · saved output",
+    "font": "Arial, 9 px",
+    "background_rgb": [
+      16,
+      24,
+      32
+    ],
+    "foreground_rgb": [
+      184,
+      203,
+      221
+    ]
+  },
+  "encoding": {
+    "tool": "ffmpeg version 8.1.1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "scale_filter": "area",
+    "palette_max_colours": 96,
+    "palette_stats_mode": "diff",
+    "dither": "bayer",
+    "bayer_scale": 5,
+    "palette_diff_mode": "rectangle",
+    "command": [
+      "ffmpeg",
+      "-y",
+      "-ss",
+      "3",
+      "-t",
+      "6",
+      "-i",
+      "$SOURCE_VIDEO",
+      "-loop",
+      "1",
+      "-framerate",
+      "6",
+      "-i",
+      "$CAPTION_OVERLAY_PNG",
+      "-filter_complex",
+      "[0:v]fps=6,scale=800:300:flags=area[v];[v][1:v]overlay=0:0:shortest=1:format=auto,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle",
+      "-loop",
+      "0",
+      "real-tum-demo.gif"
+    ],
+    "caption_overlay_generation": "Pillow RGBA 800x300 transparent canvas; draw rectangle (596,255)-(799,269) in (16,24,32,255); Arial.ttf size9 text at (604,258), 6 fps GIF · saved output, colour (184,203,221,255).",
+    "gif_comment": "Inserted a GIF comment extension with dataset attribution, license URLs and saved-playback scope after the global colour table; no scene pixel changes."
+  },
+  "attribution": {
+    "dataset": "TUM RGB-D Benchmark, Freiburg 1 xyz",
+    "authors": "Jürgen Sturm et al.",
+    "citation": "J. Sturm, N. Engelhard, F. Endres, W. Burgard and D. Cremers, A Benchmark for the Evaluation of RGB-D SLAM Systems, IROS 2012.",
+    "dataset_url": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset",
+    "archive_url": "https://webshare.cvg.cit.tum.de/g/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_xyz.tgz",
+    "license": "CC BY 4.0 (dataset terms; no blanket code relicensing)",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "checks": {
+    "all_36_frames_decode": true,
+    "36_distinct_frames": true,
+    "total_gif_delay_ms": 6000,
+    "infinite_loop": true,
+    "under_2000000_bytes": true,
+    "attribution_and_license_in_gif_comment": true,
+    "visual_review": "First frame and four-frame contact sheet; RGB/depth/raycast objects, source captions and credits checked at native size."
+  }
+}

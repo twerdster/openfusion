@@ -2,6 +2,8 @@
 
 Read SUMMARY.md first, then this file, README.md, updated/README.md, docs/BUILD.md and relevant implementation/validation evidence.
 
+Keep the two READMEs focused on setup, use, recorded results and practical limits. Preserve detailed repair evidence, synthetic criteria and sanitizer qualifications in docs/VALIDATION.md, and dataset conversion/evaluation in docs/REAL_DATA.md. The top-of-README assets/real-tum-demo.gif is actual saved TUM output; keep its size below 2,000,000 bytes and update assets/real-tum-demo-gif.json when regenerating it. Label changed frame rate and saved playback accurately, preserve dataset attribution, and never imply that the preview measures processing speed. A focused Claude editorial review completed for this concise documentation and preview layout on 2026-11-13; its wording corrections add no runtime coverage.
+
 ## Build and validation workflow
 
 Clone recursively or run `git submodule update --init`. The maintained entrypoint is `updated/CMakeLists.txt`, requiring Linux, NVIDIA CUDA and a compatible host compiler, CMake ≥3.18 and C++17. Bundled Eigen and helper headers come from the original submodule. There is no system Eigen, CImg, display-library or sensor-SDK dependency for the headless target. It uses CUDA operators and a CPU Eigen ICP solve.
