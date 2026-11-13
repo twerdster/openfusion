@@ -6,7 +6,7 @@
 
 This is the 2026 Linux headless port. It reads calibrated depth frames, estimates camera motion with ICP, integrates a TSDF volume and raycasts the reconstruction. CUDA computes depth/normal maps, ICP correspondences, integration and raycasting; CPU Eigen solves ICP's 6 × 6 system.
 
-The recovered original is unchanged in `../source/` at `8d435bfff054543c7e57274b773503b1370f90b4`. Derived files retain their notices. This updated work is separate from the students' original implementation; see [attribution and terms](../README.md#original-project-and-attribution).
+The recovered original is unchanged in `../source/` at `8d435bfff054543c7e57274b773503b1370f90b4`. Derived files retain their notices. This updated work is separate from the students' original implementation; see [attribution and terms](../README.md#attribution-and-terms).
 
 ## Build and run
 
