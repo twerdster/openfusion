@@ -1,0 +1,26 @@
+[
+  {
+    "variant": "original-integration",
+    "test_exit_code": 1,
+    "expected_success": false,
+    "instrumentation": "none",
+    "failure": "FAIL: integration changed TSDF guard slab",
+    "expectation_met": true
+  },
+  {
+    "variant": "original-icp-poisoned-scratch",
+    "test_exit_code": 1,
+    "expected_success": false,
+    "instrumentation": "shared scratch initialized to finite 1.0 canaries",
+    "failure": "FAIL: ICP AtA differs from CPU reference",
+    "expectation_met": true
+  },
+  {
+    "variant": "fixed-icp-poisoned-scratch",
+    "test_exit_code": 0,
+    "expected_success": true,
+    "instrumentation": "shared scratch initialized to finite 1.0 canaries",
+    "failure": "",
+    "expectation_met": true
+  }
+]

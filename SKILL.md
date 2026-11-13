@@ -1,17 +1,31 @@
 # Maintaining openfusion
 
-Read SUMMARY.md, then this file, then README.md. Inspect relevant code, original usage records and any updated/VALIDATION.json before changing technical claims.
+Read SUMMARY.md first, then this file, README.md, updated/README.md, docs/BUILD.md and relevant implementation/validation evidence.
 
-## Repository workflow
+## Build and validation workflow
 
-Clone recursively. source/Source/CMakeLists.txt is entrypoint; docs/BUILD.md documents modern invocations of original CMake/backend options and blockers. Replay reads Parameters.txt and recordedN/recorded-rgbN binary files.
+Clone recursively or run `git submodule update --init`. The maintained entrypoint is `updated/CMakeLists.txt`, requiring Linux, NVIDIA CUDA and a compatible host compiler, CMake ≥3.18 and C++17. Bundled Eigen and helper headers come from the original submodule. There is no system Eigen, CImg, display-library or sensor-SDK dependency for the headless target. It uses CUDA operators and a CPU Eigen ICP solve.
 
-Treat these commands as scoped component or historical inspection procedures exactly as documented. No build/package step bundles this repository's wrapper documentation. Do not rerun missing-dependency/full-hardware applications merely to verify prose edits. When code changes, run the affected component checks and record actual environment, skips and limits.
+```sh
+cmake -S updated -B build/updated -DCMAKE_BUILD_TYPE=Release
+cmake --build build/updated --parallel 2
+(cd build/updated && ctest --output-on-failure)
+build/updated/openfusion_headless --self-test --demo --output openfusion-output
+python3 updated/tools/view_demo.py openfusion-output/demo
+```
 
-## Preservation and claims
+Default volume is 512³ over 1,024 mm (2 mm voxels). A 128³ build is a coarse 8 mm setting; report its resolution separately. Default CUDA target 86 embeds sm_86 binary code and compute_86 PTX; the checked RTX 4090 ran the build with CUDA 11.5, without recording driver code selection. Select an appropriate target for other hardware/toolkits. Do not change system toolchains or interrupt unrelated GPU jobs just to repeat documentation checks.
 
-Keep original source bytes, submodule pins, provenance manifests, student/third-party credits and licenses intact. Do not edit upstream README files in submodules or historical source documentation to modernize the wrapper. Put any future implementation or dependency adaptation in a separately labeled updated/ area with its own tests.
+For runtime changes, run affected GPU component checks, moving replay and generic replay, retaining commands, environment, outputs and failures. Three CTest entries exercise these paths, not three independent datasets. Review updated/VALIDATION.json, updated/validation/ and implementation before publishing claims. Four Compute Sanitizer tools completed the 128³ component checks and moving demo with no errors/shared-memory hazards; preserve that resolution/path scope. This initcheck version does not check shared-memory initialization. Only record further checks after completed logs. Re-run affected sanitizers after runtime changes or qualify/drop stale claims. Check stationary-pose baseline, per-sphere coverage and visibility errors alongside nearest-surface geometry.
 
-Requires compatible NVIDIA CUDA, Eigen/CImg/GLEW/GLUT/OpenGL/X11/pthreads and selected sensor SDK. Legacy CUDA utility headers/compute targets and hardcoded paths require work. No updated port/notebook. No overall source license file found; individual terms remain.
+The full-volume CPU/GPU comparison allows only the corresponding weight decision to vary for SDF within ±0.002 mm of the −10 mm integration cutoff, as a separately counted classification band. Preserve outside-band weight/TSDF checks and report differing boundary decisions. This is not a blanket numerical tolerance or general correctness result.
 
-Before each commit, review and synchronize SUMMARY.md and this file. Validate Markdown/relative links, retained figure paths and diff scope. Keep historical figures distinct from current output, and synthetic examples distinct from measurements. Explain what unit-test counts cover; do not convert source inspection or failed builds into compatibility, correctness or benchmark claims. Do not claim an external review unless it actually occurred.
+## Preservation and scope
+
+Keep `source/` pinned at `8d435bfff054543c7e57274b773503b1370f90b4`, with original files/notices intact. Adaptations belong under `updated/`. Preserve students Nurit Schwabsky/Vered Cohen and supervisors Chaim Gotsman/Aaron Wetzler attribution alongside upstream owner Gil Ben-Shachar. No overall source license was found; do not add a blanket license to recovered/derived files.
+
+The original entrypoint source/Source/CMakeLists.txt, GUI, camera SDKs and optional filters are unported/unvalidated. Current evidence uses synthetic replay, not a real sensor or long sequence. Raycasting retains nearest-voxel sampling, a fixed 1.5 mm step and finite-difference normals with measured plane angular error. `surface.ply` is raycast points, not a mesh. Same-ray range error includes silhouette disagreements and must accompany point-to-scene error in demo accuracy descriptions. Generic replay has no known truth and records status `executed`, not an accuracy pass.
+
+Original-kernel ablations must state whether instrumentation was added: the integration guard fails with the original kernel; original ICP finite-scratch seeding fails its CPU numerical reference and the equivalently seeded updated reduction passes. This diagnostic is not evidence of deterministic unmodified original runtime failure. Historical imagery is not fresh validation. Label generated input synthetic and distinguish saved-output playback from CUDA execution. Outputs are PPM, ASCII PLY and JSON; view_demo.py embeds these into standalone HTML using Python's standard library.
+
+Before every commit, review and synchronize SUMMARY.md and this file for behavior, workflow, command, output, status and handoff changes. Verify Markdown, relative links, images and diff scope. No packaging step bundles wrapper docs. Request a real Claude editorial review when asked, check factual feedback against code/evidence and record only reviews that actually completed.

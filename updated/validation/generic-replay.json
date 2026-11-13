@@ -1,0 +1,31 @@
+{
+  "input": "user-supplied Parameters.txt and recordedN depth frames",
+  "ground_truth_available": false,
+  "validation_scope": "operator execution and finite output; no reconstruction or pose accuracy measurement without ground truth",
+  "operators": "CameraFromFile -> CUDA vertices/normals -> ICP -> TSDF integration -> CUDA raycast",
+  "volume_size": 512,
+  "volume_width_mm": 1024,
+  "voxel_width_mm": 2,
+  "image_width": 193,
+  "image_height": 145,
+  "initial_camera_z_mm": 768,
+  "frames": [
+    {"index": 0, "icp_solved": null, "icp_iterations": 0, "raycast_hits": 26649, "estimated_pose_row_major": [1, 0, 0, 0, 0, 1, 0, 0, -0, 0, 1, 768, 0, 0, 0, 1]},
+    {"index": 1, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26649, "estimated_pose_row_major": [1, -0.000107841835, -2.38287284e-05, 0.135418549, 0.000107845015, 1, 0.000133554713, -0.0717864782, 2.38143275e-05, -0.000133557274, 1, 767.289062, 0, 0, 0, 1]},
+    {"index": 2, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26649, "estimated_pose_row_major": [0.999999046, -5.30415018e-05, 0.00139370363, 1.67818415, 5.30024554e-05, 1, 2.80553613e-05, -0.42526722, -0.00139370514, -2.79814667e-05, 0.999999046, 767.640381, 0, 0, 0, 1]},
+    {"index": 3, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26649, "estimated_pose_row_major": [0.999999225, 1.48402087e-05, 0.00126129889, 1.94532561, -1.48674881e-05, 1, 2.1622136e-05, -0.854008675, -0.00126129854, -2.16408753e-05, 0.999999225, 767.762512, 0, 0, 0, 1]},
+    {"index": 4, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26661, "estimated_pose_row_major": [0.999998689, -0.000211490304, 0.00162035401, 2.74241424, 0.000210771934, 0.99999994, 0.000443495839, -1.03719032, -0.00162044773, -0.000443153665, 0.999998629, 767.924744, 0, 0, 0, 1]},
+    {"index": 5, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26825, "estimated_pose_row_major": [0.99999851, -0.000520748436, 0.00167020527, 3.21220231, 0.000518913439, 0.999999285, 0.00109889335, -0.999860108, -0.0016707764, -0.00109802489, 0.999998033, 767.966064, 0, 0, 0, 1]},
+    {"index": 6, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26857, "estimated_pose_row_major": [0.999998808, -0.000966708816, 0.001252505, 3.18398452, 0.0009648251, 0.99999845, 0.00150368351, -1.07834804, -0.0012539567, -0.00150247326, 0.999998152, 767.910095, 0, 0, 0, 1]},
+    {"index": 7, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26944, "estimated_pose_row_major": [0.999998629, -0.00107275823, 0.0013192324, 3.65592241, 0.00107106601, 0.999998689, 0.00128275063, -1.42397869, -0.0013206068, -0.00128133583, 0.999998391, 767.983398, 0, 0, 0, 1]},
+    {"index": 8, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26979, "estimated_pose_row_major": [0.999999106, -0.000722122844, 0.00119898515, 3.76796532, 0.000720628188, 0.999999046, 0.00124654686, -1.67446423, -0.00119988422, -0.00124568166, 0.999998569, 768.030151, 0, 0, 0, 1]},
+    {"index": 9, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26977, "estimated_pose_row_major": [0.99999851, -0.000642012863, 0.00163872121, 4.42238092, 0.000639985316, 0.999999106, 0.00123743748, -1.84675968, -0.00163951423, -0.00123638695, 0.999997914, 768.15332, 0, 0, 0, 1]},
+    {"index": 10, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26979, "estimated_pose_row_major": [0.999997795, -0.00091719866, 0.00190033927, 4.97965193, 0.000914940669, 0.999998927, 0.00118862442, -2.10843253, -0.00190142752, -0.00118688319, 0.999997497, 768.304199, 0, 0, 0, 1]},
+    {"index": 11, "icp_solved": true, "icp_iterations": 15, "raycast_hits": 26977, "estimated_pose_row_major": [0.999996662, -0.00131561747, 0.00223824987, 5.58487368, 0.00131294166, 0.99999851, 0.00119637488, -2.38742971, -0.00223982031, -0.00119343249, 0.999996781, 768.414246, 0, 0, 0, 1]}
+  ],
+  "final_raycast_hits": 26977,
+  "observed_voxels": 28697086,
+  "maximum_voxel_weight": 12,
+  "guard_slabs_unchanged": true,
+  "status": "executed"
+}

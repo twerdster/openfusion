@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "input": "synthetic analytic three-sphere scene and back plane; not a real camera recording",
+  "linux_output": "run-512/demo",
+  "metrics_record": "../validation/metrics-512.json",
+  "input_sha256": {
+    "input-depth.ppm": "42b57facd9895678a2abcc6c766acdd2fe720b5b1142e87f01512056cad9d034",
+    "input-normals.ppm": "c05d661e3a8cc931be6e93adc28d281a7f3925dd55fe04f7ca2a0e29f5a12051",
+    "metrics.json": "6b69256fdc80a740e7b85b8bb1f9f59db3e50ed2b564e6c35ef49da7e29638dd",
+    "reconstruction-00.ppm": "0ac14062d1d887dc9e5eaa9900031b34e2104802a43e8ca09ec446bfe696d810",
+    "reconstruction-01.ppm": "b44d5a0f71a856532cd7afc4b0f1d9a88acfcb44187456c15bee795585352c3f",
+    "reconstruction-02.ppm": "e17b01f63b214f2c59bd5afce8dee018fa9901563d8471f62036a96c059fb473",
+    "reconstruction-03.ppm": "ab66da36a2c270eacbb6c5edb3556ce6234f92976d7693c4cc1f785c90ce2ed7",
+    "reconstruction-04.ppm": "27d2fc3d85efbd41ee78ba16b09c18cc3cf04db43af49a7c741dfb409dbd4320",
+    "reconstruction-05.ppm": "25d720faa96ae73223b53cf8aead8b7a9f0649903c02a08448cd71b59e91301b",
+    "reconstruction-06.ppm": "3fe53f5734e4e20bcfd69e0617e4442855882c644d3a8069c7bb2dc526c49af3",
+    "reconstruction-07.ppm": "e9a8209269cdcb7a4b03168b233c35e272b0266a441fde240563441ba9531fda",
+    "reconstruction-08.ppm": "1abefa1296adadc66522189fd23755fadda281b50540c1a426481516f4f0650d",
+    "reconstruction-09.ppm": "9b5f59d8c7cfb8f728eba12489a94c72f641d2b9c7a8133e1fb2bca413e8cd08",
+    "reconstruction-10.ppm": "f80921a5683a429d42c3890cae52221c100e780178902283bbfa63336f523f25",
+    "reconstruction-11.ppm": "77415b17d52d3d70418a374450382d502d6fbdec0ee89dc3d366243f42ad7397",
+    "reconstruction.ppm": "77415b17d52d3d70418a374450382d502d6fbdec0ee89dc3d366243f42ad7397",
+    "surface.ply": "eb614a04e80574f0eff3e9d325e2d2982c539e40e8aac8d4fea5d7cbc62e4436"
+  },
+  "reproduction_commands": [
+    "build-512/openfusion_headless --self-test --demo --output run-512",
+    "python3 updated/tools/view_demo.py run-512/demo --output updated/examples/demo.html"
+  ],
+  "preview_capture": {
+    "description": "Headless Chrome screenshot of the .images element in the generated viewer",
+    "viewport_css_pixels": [
+      1280,
+      1000
+    ]
+  },
+  "output_sha256": {
+    "demo.html": "313d92ae6833c33e7dca0c7a98e2f3671b8a4789740289d48c49d7fd9b8be718",
+    "../../assets/updated-demo.png": "df31e2a49f43e61592be1af73e08929870814e42f03400861ebca5d4bd141e96"
+  },
+  "viewer_checks": {
+    "synthetic_and_generic_replay_opened": true,
+    "javascript_errors": 0,
+    "external_network_requests": 0,
+    "saved_frame_playback": true,
+    "point_cloud_rotation": true,
+    "loaded_images": 4,
+    "displayed_surface_points": 26977,
+    "horizontal_overflow_desktop": false,
+    "horizontal_overflow_390px": false,
+    "generic_replay_absent_ground_truth_label": true
+  }
+}

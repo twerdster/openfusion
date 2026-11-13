@@ -1,0 +1,11 @@
+CUDA device: NVIDIA GeForce RTX 4090; compute capability 8.9; volume 128^3, width 1024 mm
+PASS replay_depth_normals: 7081 pixels; maximum vertex error 3.41197e-05 mm, normal error 5.96046e-08
+PASS rejected_recordings: short/oversized depth, zero dimensions/focal length, reversed depth interval, nonzero unsupported z offset and incomplete calibration
+PASS correspondence_cpu_reference: 35 blocks, 6906 matches, maximum normalized tolerance 0.0119286; includes partial blocks and invalid pixels
+plane normal diagnostics: 5313 hits, 5313 unit, 0 zero, 144 facing +z; 144 with six observed interior neighbors, 144 of those unit and facing +z, mean analytic-plane angle 7.01968 degrees; maximum CPU normal-reference error 2.42602e-07
+PASS integration_cpu_reference_and_raycast: 531272 updated voxels, max TSDF error 0.00012207 mm, 4 voxels in the 0.002 mm truncation-boundary band (0 CPU/GPU weight decisions differ), 5313 ray hits, plane RMSE 0.759359 mm, maximum 1.42962 mm; guard slabs unchanged
+PASS known_motion_icp: 15 solves, translation error 0.550969 mm, rotation error 0.0300815 degrees
+       No transform found.
+PASS degenerate_icp_rejection: plane has unconstrained motion; input pose retained
+PASS behind_camera_rejection: camera inside volume, 6400 front-facing observed voxels, no behind-camera integration
+All requested checks passed.

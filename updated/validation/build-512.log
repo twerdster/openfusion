@@ -1,0 +1,6 @@
+Consolidate compiler generated dependencies of target openfusion_core
+[ 83%] Built target openfusion_core
+Consolidate compiler generated dependencies of target openfusion_headless
+[ 91%] Building CXX object CMakeFiles/openfusion_headless.dir/tools/openfusion_headless.cpp.o
+[100%] Linking CXX executable openfusion_headless
+[100%] Built target openfusion_headless

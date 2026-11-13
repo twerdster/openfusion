@@ -1,0 +1,27 @@
+========= COMPUTE-SANITIZER
+CUDA device: NVIDIA GeForce RTX 4090; compute capability 8.9; volume 128^3, width 1024 mm
+PASS replay_depth_normals: 7081 pixels; maximum vertex error 3.41197e-05 mm, normal error 5.96046e-08
+PASS rejected_recordings: short/oversized depth, zero dimensions/focal length, reversed depth interval, nonzero unsupported z offset and incomplete calibration
+PASS correspondence_cpu_reference: 35 blocks, 6906 matches, maximum normalized tolerance 0.0119286; includes partial blocks and invalid pixels
+plane normal diagnostics: 5313 hits, 5313 unit, 0 zero, 144 facing +z; 144 with six observed interior neighbors, 144 of those unit and facing +z, mean analytic-plane angle 7.01968 degrees; maximum CPU normal-reference error 2.42602e-07
+PASS integration_cpu_reference_and_raycast: 531272 updated voxels, max TSDF error 0.00012207 mm, 4 voxels in the 0.002 mm truncation-boundary band (0 CPU/GPU weight decisions differ), 5313 ray hits, plane RMSE 0.759359 mm, maximum 1.42962 mm; guard slabs unchanged
+PASS known_motion_icp: 15 solves, translation error 0.550969 mm, rotation error 0.0300815 degrees
+       No transform found.
+PASS degenerate_icp_rejection: plane has unconstrained motion; input pose retained
+PASS behind_camera_rejection: camera inside volume, 6400 front-facing observed voxels, no behind-camera integration
+demo frame 0: 26834 ray hits, pose error 0 mm / 0 degrees, surface RMSE 3.66887 mm / p95 5.19901 mm, per-ray distance RMSE 26.7962 mm / p95 5.75062 mm, visibility outliers 0.898114 percent, sphere samples 3282/1815/821
+demo frame 1: 27017 ray hits, pose error 3.0476 mm / 0.0386667 degrees, surface RMSE 3.18113 mm / p95 3.95795 mm, per-ray distance RMSE 30.8155 mm / p95 5.40471 mm, visibility outliers 1.10301 percent, sphere samples 3402/1883/834
+demo frame 2: 27010 ray hits, pose error 3.34528 mm / 0.0371693 degrees, surface RMSE 3.19773 mm / p95 3.97702 mm, per-ray distance RMSE 30.886 mm / p95 5.8034 mm, visibility outliers 1.17364 percent, sphere samples 3435/1913/837
+demo frame 3: 27121 ray hits, pose error 3.29979 mm / 0.0470315 degrees, surface RMSE 3.21556 mm / p95 3.98254 mm, per-ray distance RMSE 30.0676 mm / p95 5.90046 mm, visibility outliers 1.13934 percent, sphere samples 3439/1911/846
+demo frame 4: 27132 ray hits, pose error 3.35444 mm / 0.0691553 degrees, surface RMSE 3.22354 mm / p95 3.98422 mm, per-ray distance RMSE 30.5766 mm / p95 6.03704 mm, visibility outliers 1.14256 percent, sphere samples 3458/1913/849
+demo frame 5: 27093 ray hits, pose error 3.43852 mm / 0.072818 degrees, surface RMSE 3.23755 mm / p95 3.99188 mm, per-ray distance RMSE 30.3351 mm / p95 6.15481 mm, visibility outliers 1.13313 percent, sphere samples 3467/1893/841
+demo frame 6: 27092 ray hits, pose error 3.39778 mm / 0.0904742 degrees, surface RMSE 3.24193 mm / p95 3.99487 mm, per-ray distance RMSE 29.8781 mm / p95 6.13791 mm, visibility outliers 1.07781 percent, sphere samples 3462/1887/846
+demo frame 7: 27087 ray hits, pose error 3.46922 mm / 0.122584 degrees, surface RMSE 3.25126 mm / p95 3.99826 mm, per-ray distance RMSE 29.9523 mm / p95 6.29756 mm, visibility outliers 1.07062 percent, sphere samples 3466/1879/848
+demo frame 8: 27093 ray hits, pose error 3.42408 mm / 0.143242 degrees, surface RMSE 3.2591 mm / p95 4.02129 mm, per-ray distance RMSE 29.3617 mm / p95 6.41445 mm, visibility outliers 1.06301 percent, sphere samples 3466/1870/845
+demo frame 9: 27066 ray hits, pose error 3.45347 mm / 0.142889 degrees, surface RMSE 3.26217 mm / p95 4.04038 mm, per-ray distance RMSE 29.8636 mm / p95 6.4154 mm, visibility outliers 1.06407 percent, sphere samples 3444/1876/851
+demo frame 10: 27034 ray hits, pose error 3.45982 mm / 0.121177 degrees, surface RMSE 3.25965 mm / p95 4.0554 mm, per-ray distance RMSE 29.7946 mm / p95 6.37114 mm, visibility outliers 1.03573 percent, sphere samples 3427/1879/855
+demo frame 11: 27029 ray hits, pose error 3.40588 mm / 0.106825 degrees, surface RMSE 3.2642 mm / p95 4.05857 mm, per-ray distance RMSE 30.0568 mm / p95 6.45603 mm, visibility outliers 1.06922 percent, sphere samples 3436/1891/842
+PASS moving_replay_demo: 12 frames, 452314 observed voxels; outputs "sanitizer-memcheck/demo"
+All requested checks passed.
+========= LEAK SUMMARY: 0 bytes leaked in 0 allocations
+========= ERROR SUMMARY: 0 errors

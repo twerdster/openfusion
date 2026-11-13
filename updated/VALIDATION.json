@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-13",
+  "status": "passed_with_documented_limits",
+  "original": {
+    "repository": "https://github.com/gilbs10/OpenFusion",
+    "commit": "8d435bfff054543c7e57274b773503b1370f90b4",
+    "local_submodule_unchanged": true
+  },
+  "implementation": "Separately labeled updated/ Linux headless maintenance port; CPU Eigen ICP solve and CUDA geometry operators",
+  "environment": {
+    "os": "Ubuntu 22.04 x86_64",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "compute_capability": "8.9",
+    "driver": "570.211.01",
+    "cuda_compiler": "11.5.119",
+    "cuda_target": "86 (embedded sm_86 SASS and compute_86 PTX; driver selection not measured)",
+    "gcc": "11.4.0",
+    "cmake": "3.22.1",
+    "compute_sanitizer_package": "12.8.93",
+    "compute_sanitizer_version": "2025.1.0.0"
+  },
+  "build_commands": {
+    "recorded_full_resolution": [
+      "cmake -S updated -B build-512 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPENFUSION_VOLUME_SIZE=512",
+      "cmake --build build-512 -j2",
+      "ctest --test-dir build-512 --output-on-failure",
+      "build-512/openfusion_headless --self-test --demo --output run-512"
+    ],
+    "isolated_release": [
+      "cmake -S updated -B build/updated -DCMAKE_BUILD_TYPE=Release",
+      "cmake --build build/updated --parallel 2",
+      "ctest --test-dir build/updated --output-on-failure"
+    ]
+  },
+  "checks": {
+    "ctest": {
+      "passed": 3,
+      "total": 3,
+      "meaning": "Three integration entries: component regressions, moving synthetic demo, replay of that generated recording",
+      "log": "validation/ctest.log"
+    },
+    "resolutions_executed": [
+      128,
+      512
+    ],
+    "sanitizers": {
+      "resolution": 128,
+      "scope": "--self-test --demo, all production operators; no real sensor data",
+      "results": "validation/sanitizer-results.json",
+      "shared_memory_initialization_checked": false,
+      "qualification": "This sanitizer version checks global initialization. CPU reference checks and instrumented scratch experiment cover the reduction defect.",
+      "command_template": "compute-sanitizer --tool TOOL --error-exitcode 99 [--leak-check full for memcheck] build/openfusion_headless --self-test --demo --output sanitizer-TOOL",
+      "build": "cmake -S updated -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPENFUSION_VOLUME_SIZE=128"
+    },
+    "defect_experiments": {
+      "results": "validation/ablation-results.json",
+      "integration": "Unmodified original volume kernel must fail the guard-slab check",
+      "icp": "Original 512-entry reduction with finite shared-scratch initialization failed the upper-triangle AtA CPU-reference comparison; the equivalently initialized fixed reduction passed all self-tests",
+      "qualification": "The ICP experiment is deliberately instrumented, not a claim that arbitrary original shared-memory contents produce a deterministic failure."
+    },
+    "isolated_build": {
+      "status": "passed",
+      "configuration": "Release, default512^3, source manifest verified before build, fresh upstream submodule checkout",
+      "logs": [
+        "validation/clean-configure.log",
+        "validation/clean-build.log",
+        "validation/clean-ctest.log"
+      ],
+      "ctest_passed": 3,
+      "ctest_total": 3
+    }
+  },
+  "demo": {
+    "input": "Deterministic analytically generated three spheres and back plane, quantized uint16 axial depth in millimeters",
+    "frames": 12,
+    "image_dimensions": [
+      193,
+      145
+    ],
+    "volume_dimension": 512,
+    "voxel_width_mm": 2,
+    "final_surface_rmse_mm": 1.99455871,
+    "final_same_ray_distance_rmse_mm": 14.4137683,
+    "final_translation_error_mm": 2.91470528,
+    "final_rotation_error_degrees": 0.177162036,
+    "final_raycast_hits": 26977,
+    "metrics": "validation/metrics-512.json",
+    "viewer": "examples/demo.html"
+  },
+  "reference_thresholds": {
+    "tsdf_maximum_allowed_error_mm": 0.002,
+    "negative_truncation_boundary_mm": -10,
+    "boundary_classification_band_mm": 0.002,
+    "boundary_band_voxels_512": 525,
+    "boundary_classification_disagreements_512": 1,
+    "scope": "Only the hard negative truncation classification permits either unchanged or boundary-updated state inside this separately counted band."
+  },
+  "limitations": [
+    "Synthetic small-motion evidence; no real camera recording or benchmark quality/throughput claim.",
+    "Original OpenGL GUI, live camera SDKs and optional image filters are outside the updated build.",
+    "Nearest-voxel raycasting, fixed 1.5 mm step and radial nearest-pixel TSDF retain silhouette and normal errors.",
+    "Mean analytic plane normal angular error was about 25.09 degrees at 512^3 despite matching the implemented finite-difference operator.",
+    "Generic replay uses a fixed 1024 mm cube, initial camera at world z=768 mm, original negative-camera-z convention and zero depth offset.",
+    "No relocalization or loop closure; rejected ICP stops generic replay before integration.",
+    "No overall upstream license file was found; original and third-party terms are preserved."
+  ],
+  "artifacts": {
+    "viewer": "examples/demo.html",
+    "viewer_input": "Linux run-512/demo: actual saved CUDA raycasts, PLY points, JSON and generated synthetic inputs",
+    "screenshot": "../assets/updated-demo.png",
+    "screenshot_origin": "Three image panels from the generated standalone viewer, inspected in Chrome",
+    "browser_checks": [
+      "all images loaded",
+      "saved-frame playback",
+      "point-cloud rotation",
+      "no JavaScript errors or external requests"
+    ]
+  },
+  "source_manifest": "validation/source-sha256.json"
+}

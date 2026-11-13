@@ -1,0 +1,4 @@
+CUDA device: NVIDIA GeForce RTX 4090; compute capability 8.9; volume 128^3, width 1024 mm
+PASS replay_depth_normals: 7081 pixels; maximum vertex error 3.41197e-05 mm, normal error 5.96046e-08
+PASS rejected_recordings: short/oversized depth, zero dimensions/focal length, reversed depth interval, nonzero unsupported z offset and incomplete calibration
+FAIL: ICP AtA differs from CPU reference
