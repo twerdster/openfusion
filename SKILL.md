@@ -2,6 +2,12 @@
 
 Read SUMMARY.md first, then this file, README.md, updated/README.md, docs/BUILD.md and relevant implementation/validation evidence.
 
+## Updated-work navigation
+
+Aaron explicitly authorized the root README’s local `New!` badge and exact “Updated and ported for modern hardware” link on 2026-11-14. Keep both linked to `updated/README.md#updated-and-ported-for-modern-hardware`; retain the italic historical-reference qualifier and preserve the rest of the historical root reference. The matching updated README heading must introduce a short, factual account of the actual changes and limitations before the existing visuals, setup and evidence. Keep implementation descriptions and detailed results under `updated/`.
+
+This navigation addition is the authorized exception to older root-README preservation instructions below. Verify the historical body after removing only that block, preserve source hashes/pins and leave historical validation hashes attached to their original freezes. Documentation-only navigation edits do not add runtime coverage or require a package rebuild.
+
 Preserve the root README as the project reference. Requests about the updated section apply to updated/README.md; do not rewrite the root reference unless Aaron explicitly requests it. Keep updated/README.md focused on setup, use, recorded results and practical limits. Preserve detailed repair evidence, synthetic criteria and sanitizer qualifications in docs/VALIDATION.md, and dataset conversion/evaluation in docs/REAL_DATA.md. The GIF at the top of updated/README.md, assets/real-tum-demo.gif, is actual saved TUM output; keep its size below 2,000,000 bytes and update assets/real-tum-demo-gif.json when regenerating it. Label changed frame rate and saved playback accurately, preserve dataset attribution, and never imply that the preview measures processing speed. A focused Claude editorial review completed for this concise updated documentation and preview layout on 2026-11-13; its wording corrections add no runtime coverage.
 
 ## Build and validation workflow

@@ -1,5 +1,9 @@
 # OpenFusion
 
+[![New!](updated/assets/new-badge.svg)](updated/README.md#updated-and-ported-for-modern-hardware) [Updated and ported for modern hardware](updated/README.md#updated-and-ported-for-modern-hardware)
+
+*Historical project reference follows. Current builds and results are in the updated section above.*
+
 <p align="center">
   <img src="assets/project-preview.jpg" alt="Historical four-panel figure: shaded reconstruction of a seated person, input normal map, depth image and camera RGB image" width="480">
 </p>

@@ -1,5 +1,9 @@
 # Updated OpenFusion
 
+## Updated and ported for modern hardware
+
+The Linux/CUDA headless port retains the recovered depth conversion, ICP, TSDF integration and raycasting pipeline, with repairs to volume indexing, correspondence reduction, solver checks and memory handling. It adds calibrated file replay, regression tests and saved-output viewing; the original GUI and live sensor SDKs remain outside this target.
+
 ![Real Kinect replay: RGB reference, measured depth and saved CUDA reconstruction](../assets/real-tum-demo.gif)
 
 *Excerpt from the real Kinect TUM Freiburg 1 xyz run. RGB is reference only; the other panels show measured depth and saved CUDA output. Saved playback is not a processing-speed measurement. Dataset: Sturm et al., IROS 2012, [CC BY 4.0](https://cvg.cit.tum.de/data/datasets/rgbd-dataset#license). [Data and preview details](../docs/REAL_DATA.md).*

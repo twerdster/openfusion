@@ -2,6 +2,12 @@
 
 Read this file first, then SKILL.md and README.md. Context updated 2026-11-13.
 
+## Updated-work navigation (2026-11-14)
+
+Aaron authorized a top-of-page `New!` badge and “Updated and ported for modern hardware” link in the root README. Both lead to the corresponding heading in `updated/README.md`, which now opens with a brief description of the actual port, repairs or reimplementation and its limits. An italic line marks the following content as the historical reference. The historical root reference body remains unchanged; current implementation details stay under `updated/`.
+
+This documentation change does not alter source, submodule pins, media or recorded validation. Earlier root-README byte-identity statements and hashes apply to their recorded baseline; current preservation checks remove only the authorized navigation block before comparing the historical body.
+
 ## Purpose and provenance
 
 OpenFusion implements calibrated depth conversion, ICP alignment, TSDF integration and raycasting in C++/CUDA. `source/` remains the unchanged gilbs10/OpenFusion submodule at `8d435bfff054543c7e57274b773503b1370f90b4`. The recovered 35-page report credits students Nurit Schwabsky/Vered Cohen and supervisors Chaim Gotsman/Aaron Wetzler; the upstream repository owner is Gil Ben-Shachar (`gilbs10`). Preserve both records without treating the names as interchangeable. Individual source/third-party terms remain; no overall source license was found.
