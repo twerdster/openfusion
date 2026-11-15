@@ -1,12 +1,16 @@
 # openfusion: maintenance context
 
-Read this file first, then SKILL.md and README.md. Context updated 2026-11-13.
+Read this file first, then SKILL.md and README.md. Context updated 2026-11-15.
 
 ## Updated-work navigation (2026-11-14)
 
 Aaron authorized a top-of-page `New!` badge and “Updated and ported for modern hardware” link in the root README. Both lead to the corresponding heading in `updated/README.md`, which now opens with a brief description of the actual port, repairs or reimplementation and its limits. An italic line marks the following content as the historical reference. The historical root reference body remains unchanged; current implementation details stay under `updated/`.
 
 This documentation change does not alter source, submodule pins, media or recorded validation. Earlier root-README byte-identity statements and hashes apply to their recorded baseline; current preservation checks remove only the authorized navigation block before comparing the historical body.
+
+## Historical award reference (2026-11-15)
+
+Aaron authorized a concise award reference in the root README. The [Technion announcement](https://www.cs.technion.ac.il/news/view-new.php?nwid=673), published 29 March 2014, lists “Real Time 3D Surface Reconstruction” among the 2013 Amdocs Best Project Contest winners, with a ceremony on 30 March 2014. It names Vered Cohen and Nurit Schwevsky and credits Aaron Wetzler/Yaron Honen; the recovered report uses Nurit Schwabsky and credits Chaim Gotsman/Aaron Wetzler. Preserve these source-specific records. This authorized historical-context addition supersedes earlier root-body identity checks only for the new award paragraph; source, updated code, media and validation remain unchanged.
 
 ## Purpose and provenance
 

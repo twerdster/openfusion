@@ -16,6 +16,8 @@ OpenFusion implements a KinectFusion-style depth reconstruction pipeline. It con
 
 Students: Nurit Schwabsky and Vered Cohen. Supervision: Chaim Gotsman and Aaron Wetzler. The pinned upstream repository belongs to [Gil Ben-Shachar (`gilbs10`)](https://github.com/gilbs10). Maintenance changes are labeled as updated work; they are not presented as the students' original implementation.
 
+Historical award: Technion listed “Real Time 3D Surface Reconstruction” among the [2013 Amdocs Best Project Contest winners](https://www.cs.technion.ac.il/news/view-new.php?nwid=673), recognized at the 30 March 2014 ceremony. The announcement credits Aaron Wetzler and Yaron Honen as supervisors; the project report credits Chaim Gotsman and Aaron Wetzler.
+
 *The figure above is archived project imagery. It was not produced by the updated runner.*
 
 ## Original and updated code
