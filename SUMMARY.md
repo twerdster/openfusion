@@ -68,3 +68,7 @@ The browser inspector displays saved raycast frames and point samples from the 1
 An actual tools-disabled Claude editorial rewrite completed for this project on 2026-11-17. Factual suggestions were checked against code and recorded results; saved playback and synthetic inputs remain labeled. Private prompts and actual responses stay in the task review directory. Review adds no runtime evidence.
 
 The completed browser checks cover meaningful project-specific controls, asset loading and desktop/phone viewport layout with no uncaught JavaScript errors, failed assets or horizontal overflow. `demo/validation.json` records scope and exact prior-document hashes. A completed follow-up Claude review and focused delta review informed checked fixes. No native algorithm or recovered source changed.
+
+## Generic public paths (2026-11-17)
+
+Public maintainer context and validation excerpts now use generic build/data locations. docs/PATH_REDACTIONS.json records before/after hashes for incidental path substitutions; unmodified raw evidence is retained privately. Prior frozen hashes still refer to the earlier raw text. Original source, executable inputs/outputs, diagnostic outcomes and numerical results are unchanged. This text-only cleanup adds no runtime coverage and does not change the deployed demo assets.

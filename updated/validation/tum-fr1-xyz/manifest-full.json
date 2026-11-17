@@ -2,7 +2,7 @@
   "schema_version": 1,
   "dataset": "TUM RGB-D",
   "source": {
-    "path": "/Volumes/AgentSSD/agent-work/openfusion/datasets/tum-fr1-xyz",
+    "path": "/path/to/data/openfusion/datasets/tum-fr1-xyz",
     "kind": "directory"
   },
   "format_documentation": "https://cvg.cit.tum.de/data/datasets/rgbd-dataset/file_formats",

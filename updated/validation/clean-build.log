@@ -7,7 +7,7 @@ Consolidate compiler generated dependencies of target openfusion_core
 [ 50%] Building CUDA object CMakeFiles/openfusion_core.dir/src/CameraHandler.cu.o
 [ 58%] Building CXX object CMakeFiles/openfusion_core.dir/src/CameraAbstract.cpp.o
 [ 66%] Building CXX object CMakeFiles/openfusion_core.dir/src/CameraFromFile.cpp.o
-[ 75%] Building CUDA object CMakeFiles/openfusion_core.dir/home/aaron/openfusion-linux-20261113/release-check/source/Source/src/General.cu.o
+[ 75%] Building CUDA object CMakeFiles/openfusion_core.dir/path/to/work/openfusion-linux-20261113/release-check/source/Source/src/General.cu.o
 [ 83%] Linking CXX static library libopenfusion_core.a
 [ 83%] Built target openfusion_core
 Consolidate compiler generated dependencies of target openfusion_headless

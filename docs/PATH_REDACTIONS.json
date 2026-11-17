@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-17",
+  "scope": "Generalize machine-specific paths in public setup/context and historical diagnostic records. Original code, source pins, executable artifacts and numerical results are unchanged.",
+  "evidence_policy": "Original raw text is retained privately. Earlier immutable hashes continue to identify pre-redaction evidence bytes; the published hashes below identify their path-generalized counterparts. No validation was rerun or invented.",
+  "files": [
+    {
+      "file": "updated/validation/original-configure.log",
+      "original_sha256": "2eefb4222e157c971136e83c303a86d5a1c24e4e3f120a3d6e720cf0dbf52be3",
+      "published_sha256": "376c30796e703bed39b2b8ac568151e04efe29963cadfadceb43ac3b6cb5f2c4",
+      "scope": "Personal workstation/build/data prefixes generalized; numerical values, operator diagnostics and failure outcomes unchanged."
+    },
+    {
+      "file": "updated/validation/ctest-512.log",
+      "original_sha256": "8204b83c19f5742dfcb775a16e5742d5f0d39017f95da485bbf3dc286a4006c7",
+      "published_sha256": "2f353c9f1ac2114458663171d6fd5f1a9fac6cd9a07acf8509eeff8986297ede",
+      "scope": "Personal workstation/build/data prefixes generalized; numerical values, operator diagnostics and failure outcomes unchanged."
+    },
+    {
+      "file": "updated/validation/clean-configure.log",
+      "original_sha256": "e44e3d9dae64cb1fedd16aa4ce844390f1e229e5b10e752c868ac2f48c68c2f1",
+      "published_sha256": "6b3a315df88e7d002799986d4abc6dfe6b49cacb21cfb61805b47302678cf263",
+      "scope": "Personal workstation/build/data prefixes generalized; numerical values, operator diagnostics and failure outcomes unchanged."
+    },
+    {
+      "file": "updated/validation/ctest.log",
+      "original_sha256": "aad57c3243ae00c13caf8585b575c6e6b782ac389a21d493b7817421fac157cc",
+      "published_sha256": "b69026651b830533e39f4693ba528fadab6190f40000bccecde9c0309f240f6c",
+      "scope": "Personal workstation/build/data prefixes generalized; numerical values, operator diagnostics and failure outcomes unchanged."
+    },
+    {
+      "file": "updated/validation/clean-build.log",
+      "original_sha256": "de4a46d8d31b23efc93ca9ed98c364b8cbf5071576859fa6c7edf27f5694dfd6",
+      "published_sha256": "d68d06fa68b81fc1786a0f88d336d001e83d354edd853fb88aed44a2d67569d0",
+      "scope": "Personal workstation/build/data prefixes generalized; numerical values, operator diagnostics and failure outcomes unchanged."
+    },
+    {
+      "file": "updated/validation/clean-ctest.log",
+      "original_sha256": "a1b49676678f07ffca57ca6f701d752d657256971f67a6ba0d19e76f1d515567",
+      "published_sha256": "9ed04871fade9ffc3f9184506a7882b42ca4f8aed0be5314626990a579e28db3",
+      "scope": "Personal workstation/build/data prefixes generalized; numerical values, operator diagnostics and failure outcomes unchanged."
+    },
+    {
+      "file": "updated/validation/tum-fr1-xyz/manifest-full.json",
+      "original_sha256": "6e4a711df4daa316241ae09c96087942d4a34ea18bc16686690a29e448be5288",
+      "published_sha256": "2d8d060451819b900470be02fe60864b3dc2e556a270b369f8804b3ce7ba999b",
+      "scope": "Personal workstation/build/data prefixes generalized; numerical values, operator diagnostics and failure outcomes unchanged."
+    }
+  ]
+}

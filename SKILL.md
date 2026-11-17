@@ -53,3 +53,5 @@ The static `demo/` page is separately labeled updated work. Read `demo/provenanc
 Before each commit reread and synchronize SUMMARY/SKILL, verify exact prior-document snapshots and original source/tree identity, inspect links/images and record real Claude review completion only when supported by actual response records. Keep private contact/account/host/device/signing details out of new public docs.
 
 Keep browser-validation records separate from historical numerical/native records; display samples and axis reorders must remain explicit in provenance.
+
+Use user-selected or placeholder build/data prefixes in public guides and diagnostics. Keep actual workstation locations and account/SSH/storage identifiers in private run records. For path-only redactions preserve raw evidence privately, record before/after hashes in docs/PATH_REDACTIONS.json, and distinguish the published generalized text from earlier frozen hashes. Do not edit original source or numeric results to remove incidental report paths.
