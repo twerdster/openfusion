@@ -1,0 +1,8 @@
+{
+  "scope": "Existing saved synthetic-demo frame and cloud inspector, no CUDA execution in browser",
+  "source": "updated/examples/demo.html",
+  "source_sha256": "313d92ae6833c33e7dca0c7a98e2f3671b8a4789740289d48c49d7fd9b8be718",
+  "real_preview_source": "assets/real-tum-demo.gif",
+  "real_preview_sha256": "de6dd0b2d807825bf32e56c448c10670ae56327954fe612211214dc6eb4d0e50",
+  "recorded_scope": "12-frame analytic synthetic sequence; linked separate TUM real-data preview"
+}

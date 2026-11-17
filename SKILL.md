@@ -43,3 +43,13 @@ Original-kernel ablations must state whether instrumentation was added: the inte
 Before every commit, review and synchronize SUMMARY.md and this file for behavior, workflow, command, output, status and handoff changes. Verify Markdown, relative links, images and diff scope. No packaging step bundles wrapper docs. Request a real Claude editorial review when asked, check factual feedback against code/evidence and record only reviews that actually completed.
 
 The 2026-11-13 real-data follow-up received a completed focused Claude editorial review of its documentation and verified conversion/evaluation facts. Applied corrections clarify timestamp anchoring, capture duration and motion scale; this adds no runtime coverage.
+
+## Current README and browser-demo workflow (2026-11-17)
+
+The latest user request authorizes revising the root README into a concise project description and Updated entrypoint. Preserve `ORIGINAL_PROJECT_REFERENCE.md` and `updated/DETAILS.md` as exact snapshots of the prior maintained documentation; older root-byte-identity instructions apply to those snapshots rather than blocking the explicitly requested rewrite. Keep the `updated/README.md#updated-and-ported-for-modern-hardware` anchor for incoming links. Preserve original source/pins/notices and all existing result bindings.
+
+The static `demo/` page is separately labeled updated work. Read `demo/provenance.json` before changing data or claims. Keep saved playback, supplied camera poses, procedural fixtures and actual component execution distinct; display controls must not imply rerunning a native algorithm. Use `python3 -m http.server 8000 --directory demo` for local interaction checks. Pages packages only `demo/` via `.github/workflows/demo-pages.yml`. Verify loading, meaningful controls, phone/desktop layout, actual screenshots and browser errors after changes. For component translations compare affected numerical outputs against the maintained reference. Browser display changes alone do not require expensive native reconstructions or add hardware/accuracy coverage.
+
+Before each commit reread and synchronize SUMMARY/SKILL, verify exact prior-document snapshots and original source/tree identity, inspect links/images and record real Claude review completion only when supported by actual response records. Keep private contact/account/host/device/signing details out of new public docs.
+
+Keep browser-validation records separate from historical numerical/native records; display samples and axis reorders must remain explicit in provenance.

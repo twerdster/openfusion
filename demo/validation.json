@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-17",
+  "browser": "Current installed Google Chrome via isolated Playwright context",
+  "viewports_css_pixels": [
+    [
+      1280,
+      950
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "checks": [
+    {
+      "name": "saved_frame_seek",
+      "pass": true
+    },
+    {
+      "name": "cloud_orbit",
+      "pass": true
+    }
+  ],
+  "uncaught_javascript_errors": [],
+  "failed_asset_requests": [],
+  "horizontal_overflow_desktop": false,
+  "horizontal_overflow_phone": false,
+  "scope": "Browser interaction/rendering only; no new physical device, original app, reconstruction accuracy or native algorithm validation.",
+  "editorial_review": {
+    "actual_claude_editorial_rewrite": "completed 2026-11-17",
+    "actual_claude_followup_review": "completed 2026-11-17",
+    "actual_claude_focused_delta_review": "completed 2026-11-17; no blocking defects; verified small fixes applied",
+    "adds_native_runtime_coverage": false
+  },
+  "preserved_source_tree": "160000 commit 8d435bfff054543c7e57274b773503b1370f90b4\tsource",
+  "previous_document_sha256": {
+    "root": "6173795b0ede47edb24a8fb5f3ba402bb8ab95f826b058abacce8a2bc4f762ea",
+    "updated": "95efba8eb91337ace05497a688042f4ea55f1d83471d5aeed693abbad3cf01b8"
+  }
+}
